@@ -63,7 +63,7 @@ class Testpredtrain(unittest.TestCase):
 
     def test_tp_diagonalBehavior(self):
         rows = 5000
-        X_train = self.diagonal(rows)                   ## create a diagonal matrix with 10000 rows
+        X_train = self.diagonal(rows)                   ## create a diagonal matrix with 5000 rows
         X_train = csr_matrix(X_train)
         Y_train = [i for i in range(1,rows+1)]          ## create corresponding categories to each row in diagonal matrix
 
