@@ -105,6 +105,16 @@ class Testpredtrain(unittest.TestCase):
 
         pred = predict(X_test , Y_test , 100)
         self.assertEqual(pred , [3 , 1 , 2])
+
+    def test_tp_wrongbatchsize(self):
+        self.insertdiffrntPosts("publish", "normal")                          ##fixture
+        self.insertEntities()                                                 ##fixture
+        
+        X_train = getX(self.db,0,20)
+        Y_train = getY(self.db,0,20)
+                        
+        self.assertRaises(ValueError,train,X_train,Y_train,0)
+        
         
     def diagonal(self,rows):
         arr = [1]*rows
