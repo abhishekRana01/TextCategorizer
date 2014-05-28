@@ -3,13 +3,11 @@ from getPostEntities import getPostEntities
 from getcountEntities import getcountEntities
 from imports import *
 
-
 def getX(db,offset,limit):
     row = []
     col = []
     data = []
     i = 0
-    postids = getPostIds(db,offset,limit)
     for item in postids:
         k = getPostEntities(db,item)
         col.append(k)

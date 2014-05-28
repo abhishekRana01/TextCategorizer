@@ -30,7 +30,8 @@ class TestGetX(unittest.TestCase):
     def test_getX_normalBehavior(self):
         self.insertPosts("publish", "normal")                          ##fixture : inserting something in db for testing
         self.insertEntities()                                          ##fixture : inserting something in db for testing
-        output = getX(self.db,self.offset,self.limit)                  ##fetch values from table in test database
+        postids = getPostIds(self.db,self.offset,self.limit)
+        output = getX(postIds)                  ##fetch values from table in test database
         output = output.todense().tolist()
         self.assertEqual(self.X,output)
 

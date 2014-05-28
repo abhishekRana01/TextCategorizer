@@ -7,5 +7,4 @@ def getPostIds(db,offset,limit):
     data = cur.fetchall()
     pc = map(list,data)             #List for storing post categories
     cur.close()
-    db.commit()
     return list(itertools.chain.from_iterable(pc))
