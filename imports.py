@@ -10,3 +10,8 @@ from sklearn import svm
 import cPickle
 import timeit
 import random
+
+PASSWORD=""
+TESTDB="testdb"
+USER="root"
+

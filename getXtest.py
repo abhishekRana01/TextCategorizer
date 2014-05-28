@@ -3,7 +3,7 @@ from imports import *
 class TestGetX(unittest.TestCase):
 
     def setUp(self):
-        self.db = MySQLdb.connect(host="localhost",user="root",passwd="123456",db="testdb")
+        self.db = MySQLdb.connect(host="localhost",user="root",passwd="",db="testdb")
         self.cur =  self.db.cursor()
         self.offset = 0
         self.limit = 5
@@ -30,7 +30,8 @@ class TestGetX(unittest.TestCase):
     def test_getX_normalBehavior(self):
         self.insertPosts("publish", "normal")                          ##fixture : inserting something in db for testing
         self.insertEntities()                                          ##fixture : inserting something in db for testing
-        output = getX(self.db,self.offset,self.limit)                  ##fetch values from table in test database
+        postids = getPostIds(self.db,self.offset,self.limit)
+        output = getX(postIds)                  ##fetch values from table in test database
         output = output.todense().tolist()
         self.assertEqual(self.X,output)
 
