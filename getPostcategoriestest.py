@@ -4,7 +4,7 @@ from getPostcategories import getPostcategories
 class TestGetPostcategories(unittest.TestCase):
 
     def setUp(self):
-        self.db = MySQLdb.connect(host="localhost",user="root",passwd="",db="testdb", autocommit = True)
+        self.db = MySQLdb.connect(host="localhost",user=USER,passwd=PASSWORD,db=TESTDB, autocommit = True)
         self.offset = 0
         self.limit = 5
         cur =  self.db.cursor()

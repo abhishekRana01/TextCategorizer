@@ -1,5 +1,6 @@
 from scipy.sparse import *
 from scipy import *
+from collections import Counter
 import numpy as np
 import unittest
 import MySQLdb
@@ -11,7 +12,7 @@ import cPickle
 import timeit
 import random
 
-PASSWORD=""
+PASSWORD="123456"
 TESTDB="testdb"
 USER="root"
 

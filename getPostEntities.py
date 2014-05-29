@@ -1,10 +1,10 @@
 from imports import *
 
-def getPostEntities(db,post_id):
+def getPostEntities(db,postids):
     cur = db.cursor()
-    sql = "SELECT entity_id FROM post2entity where post_id = %d" %(post_id)
-    cur.execute(sql)
+    format_strings = ','.join(['%s'] * len(postids))
+    cur.execute("SELECT * FROM post2entity WHERE post_id IN (%s)" % format_strings,tuple(postids))
     data = cur.fetchall()
-    pc = map(list,data)             #List for storing post categories
+    pc = map(list,data)
     cur.close()
-    return list(itertools.chain.from_iterable(pc))
+    return np.array(pc)
