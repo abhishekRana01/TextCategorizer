@@ -3,28 +3,21 @@ from getPostEntities import getPostEntities
 from getcountEntities import getcountEntities
 from imports import *
 
-def getX(postids,postentities,columns):
+def getX(postentities,columns):
     row = []
     col = []
-    i = 0
-    j = 0
-    temp = []
-    n = len(postentities)
-    data = [1]*n
-    col  =  postentities[0:n , 1]
-    col  =  col-1
-    col = col.tolist()
-    temp =  postentities[0:n , 0].tolist()
-    for item in postids:
-        count = temp.count(item)
-        l = [j]*count
-        row.extend(l)
-        j += 1
-
-    if not row:
-        nrow = 1
-    else:
-        nrow = max(row) + 1
-    ncol =  columns
-    csr  =  csr_matrix( (data,(row,col)), shape=(nrow,ncol) )
+    data = []
+    dict = {}
+    count = 0
+    for item in postentities:
+        postid = item[0]
+        if not dict.has_key(postid):
+            dict[postid] = count;
+            count += 1
+        row.append(dict[postid])
+        col.append(item[1]-1)
+        data.append(1)
+    nrow = len(dict)
+    csr  =  csr_matrix( (data,(row,col)), shape=(nrow,columns) )
+    print csr.todense()
     return csr
