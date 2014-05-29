@@ -12,7 +12,7 @@ import cPickle
 import timeit
 import random
 
-PASSWORD="123456"
+PASSWORD=""
 TESTDB="testdb"
 USER="root"
 
