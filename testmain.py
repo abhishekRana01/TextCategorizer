@@ -4,6 +4,7 @@ import getPostEntitiestest as gp2
 import getXtest as X
 import unittest
 import trainpredicttest as tp
+import percentaccuraytest as pa
 
 suite = unittest.TestLoader().loadTestsFromTestCase(gp.TestGetPostcategories)
 unittest.TextTestRunner(verbosity=2).run(suite)
@@ -18,4 +19,7 @@ suite = unittest.TestLoader().loadTestsFromTestCase(X.TestGetX)
 unittest.TextTestRunner(verbosity=2).run(suite)
 
 suite = unittest.TestLoader().loadTestsFromTestCase(tp.Testpredtrain)
+unittest.TextTestRunner(verbosity=2).run(suite)
+
+suite = unittest.TestLoader().loadTestsFromTestCase(pa.Testpredtrain)
 unittest.TextTestRunner(verbosity=2).run(suite)
